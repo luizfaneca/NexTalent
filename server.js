@@ -2,11 +2,11 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-const authRoutes = require('./routes/auth');
-const profileRoutes = require('./routes/profile');
-const jobsRoutes = require('./routes/jobs');
-const applicationsRoutes = require('./routes/applications');
-const reportsRoutes = require('./routes/reports');
+const authRoutes = require('./auth');
+const profileRoutes = require('./profile');
+const jobsRoutes = require('./jobs');
+const applicationsRoutes = require('./applications');
+const reportsRoutes = require('./reports');
 
 const app = express();
 app.use(cors());
