@@ -760,7 +760,7 @@ async function doCadastro(){
   try{
     const data = await apiFetch('/auth/register', {method:'POST', body: JSON.stringify({nome, email, senha, role:selectedRole})});
     authToken = data.token;
-    session = {name:data.user.nome, email:data.user.email, role:data.user.role};
+    session = {nome:data.user.nome, email:data.user.email, role:data.user.role};
     await enterApp();
   }catch(e){ showMsg('msg-cadastro', e.message); }
 }
@@ -772,7 +772,7 @@ async function doLogin(){
   try{
     const data = await apiFetch('/auth/login', {method:'POST', body: JSON.stringify({email, senha})});
     authToken = data.token;
-    session = {name:data.user.nome, email:data.user.email, role:data.user.role};
+    session = {nome:data.user.nome, email:data.user.email, role:data.user.role};
     await enterApp();
   }catch(e){ showMsg('msg-login', e.message); }
 }
