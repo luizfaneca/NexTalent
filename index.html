@@ -848,7 +848,7 @@ async function loadInitialData(){
 }
 function mapJobFromApi(j){
   return {
-    id:j.id, titulo:j.titulo, empresa:j.empresa_nome||j.nome_fantasia||session.name,
+    id:j.id, titulo:j.titulo, empresa:j.empresa_nome||j.nome_fantasia||session.nome,
     area:j.ramo||'Geral', local:j.endereco||'A combinar', modelo:j.local_modelo||'—',
     regime:j.regime||'—', salario:j.salario||'A combinar', beneficios:j.beneficios||'—',
     publicada:fmtDate(j.criado_em), desc:j.descricao||'—', status:j.status
@@ -1030,7 +1030,7 @@ function barRow(label, pct, n){
 
 /* ---------- Dashboard candidato ---------- */
 function renderDashboard(){
-  document.getElementById('cand-welcome-name').textContent = `Olá, ${(profile.nome||session.name).split(' ')[0]}! Pronto para encontrar sua próxima oportunidade?`;
+  document.getElementById('cand-welcome-name').textContent = `Olá, ${(profile.nome||).split(' ')[0]}! Pronto para encontrar sua próxima oportunidade?`;
   document.getElementById('k-vagas-disp').textContent = jobs.filter(j=>j.status==='ativa').length;
   document.getElementById('k-candidaturas').textContent = applications.length;
   document.getElementById('k-andamento').textContent = applications.filter(a=>['novo','analise','entrevista'].includes(a.status)).length;
