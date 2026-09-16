@@ -363,7 +363,7 @@ tr:last-child td{border-bottom:none;}
         <div class="form-msg error" id="msg-login"></div>
         <div class="field"><label>E-mail</label><input type="email" id="log-email" placeholder="voce@email.com"></div>
         <div class="field"><label>Senha</label><input type="password" id="log-senha" placeholder="Sua senha"></div>
-        <button class="btn btn-primary btn-block" onclick="doLogin()">Entrar</button>
+        <button class="btn btn-primary btn-block" onclick="()">Entrar</button>
         <div class="auth-switch">Ainda não tem conta? <a onclick="toggleAuth('cadastro')">Cadastre-se</a></div>
       </div>
 
@@ -770,9 +770,11 @@ async function doLogin(){
   const msg = document.getElementById('msg-login'); msg.classList.remove('show');
   if(!email || !senha){ showMsg('msg-login','Informe e-mail e senha.'); return; }
   try{
-    const data = await apiFetch('/auth/login', {method:'POST', body: JSON.stringify({email, senha})});
+    const data = await apiFetch('/auth/login', {method:'POST',body: JSON.stringify({email, senha})});
+console.log('LOGIN RETORNO:', data);
     authToken = data.token;
     session = {nome:data.user.nome, email:data.user.email, role:data.user.role};
+    console.log('SESSION:', session);
     await enterApp();
   }catch(e){ showMsg('msg-login', e.message); }
 }
