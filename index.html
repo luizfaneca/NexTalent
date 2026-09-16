@@ -1030,7 +1030,7 @@ function barRow(label, pct, n){
 
 /* ---------- Dashboard candidato ---------- */
 function renderDashboard(){
-  document.getElementById('cand-welcome-name').textContent = `Olá, ${(profile.nome||).split(' ')[0]}! Pronto para encontrar sua próxima oportunidade?`;
+  document.getElementById('cand-welcome-name').textContent = `Olá, ${(profile.nome||session.nome).split(' ')[0]}! Pronto para encontrar sua próxima oportunidade?`;
   document.getElementById('k-vagas-disp').textContent = jobs.filter(j=>j.status==='ativa').length;
   document.getElementById('k-candidaturas').textContent = applications.length;
   document.getElementById('k-andamento').textContent = applications.filter(a=>['novo','analise','entrevista'].includes(a.status)).length;
